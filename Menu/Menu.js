@@ -19,6 +19,35 @@ let menuItems = [
     </ul>
   </div>
 
+*/
+
+  function menu(parameter) {
+    let bigDiv = document.createElement("div");
+    let ul = document.createElement("ul");
+
+    bigDiv.appendChild(ul);
+
+    bigDiv.classList.add("menu");
+
+    parameter.forEach(item => {
+      let li = document.createElement("li");
+      li.textContent = item;
+      ul.appendChild(li); 
+    })
+
+    let menuBtn = document.querySelector(".menu-button");
+    menuBtn.addEventListener("click", function() {
+      bigDiv.classList.toggle("menu--open");
+    });
+    return bigDiv;
+  }//closes menu function
+
+let parentTwo = document.querySelector(".header");
+parentTwo.appendChild(menu(menuItems));
+
+
+/* 
+
   The function takes an array as its only argument.
 
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
