@@ -98,17 +98,50 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
+*/
 
-  Hint: You will need to use createElement more than once here!
+  function component(info) {
+    let bigDiv = document.createElement("div");
+    let h2 = document.createElement("h2");
+    let time = document.createElement("p");
+    let first = document.createElement("p");
+    let second = document.createElement("p");
+    let third = document.createElement("p");
+    let spanBtn = document.createElement("span");
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+    bigDiv.append(h2, time, first, second, third, spanBtn);
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+    bigDiv.classList.add("article");
+    time.classList.add("date");
+    spanBtn.classList.add("expandButton");
 
-  Step 3: return the entire component.
+    h2.textContent = info.title;
+    time.textContent = info.date;
+    first.textContent = info.firstParagraph;
+    second.textContent = info.secondParagraph;
+    third.textContent = info.thirdParagraph;
+    spanBtn.textContent = "Click to expand more";
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+    spanBtn.addEventListener("click", function() {
+      bigDiv.classList.toggle("article-open");
+    })
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+    return bigDiv;
+  }// closes component function
+
+  let parent = document.querySelector(".articles");
+
+  data.forEach( i => {
+    parent.append(component(i));
+  })
+
+
+
+
+/*
+
+  // Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+
+  // Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
